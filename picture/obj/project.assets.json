@@ -802,11 +802,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marve\\source\\repos\\picture\\picture\\picture.csproj",
+      "projectUniqueName": "E:\\MLPicture\\picture\\picture.csproj",
       "projectName": "picture",
-      "projectPath": "C:\\Users\\marve\\source\\repos\\picture\\picture\\picture.csproj",
+      "projectPath": "E:\\MLPicture\\picture\\picture.csproj",
       "packagesPath": "C:\\Users\\marve\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marve\\source\\repos\\picture\\picture\\obj\\",
+      "outputPath": "E:\\MLPicture\\picture\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
