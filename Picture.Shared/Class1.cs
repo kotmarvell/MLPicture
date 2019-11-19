@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Picture.DAL
+namespace Picture.Shared
 {
     public class Class1
     {
-
     }
 }

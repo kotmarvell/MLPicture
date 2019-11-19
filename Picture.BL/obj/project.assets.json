@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.0": {
+      "Picture.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "compile": {
+          "bin/placeholder/Picture.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Picture.DAL.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Picture.DAL/1.0.0": {
+      "type": "project",
+      "path": "../Picture.DAL/Picture.DAL.csproj",
+      "msbuildProject": "../Picture.DAL/Picture.DAL.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.0": [
+      "Picture.DAL >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\marve\\.nuget\\packages\\": {},
@@ -14,9 +33,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\MLPicture\\Picture.BL\\Picture.BL.csproj",
-      "projectName": "Picture.BL",
-      "projectPath": "E:\\MLPicture\\Picture.BL\\Picture.BL.csproj",
+      "projectUniqueName": "E:\\MLPicture\\Picture.BL\\Picture.BLL.csproj",
+      "projectName": "Picture.BLL",
+      "projectPath": "E:\\MLPicture\\Picture.BL\\Picture.BLL.csproj",
       "packagesPath": "C:\\Users\\marve\\.nuget\\packages\\",
       "outputPath": "E:\\MLPicture\\Picture.BL\\obj\\",
       "projectStyle": "PackageReference",
@@ -36,7 +55,11 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\MLPicture\\Picture.DAL\\Picture.DAL.csproj": {
+              "projectPath": "E:\\MLPicture\\Picture.DAL\\Picture.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

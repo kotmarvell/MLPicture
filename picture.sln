@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "picture", "picture\picture.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{56F04B67-E6E9-44ED-A33A-53CAFDE8FDE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picture.DAL", "Picture.DAL\Picture.DAL.csproj", "{2BD33771-6083-4EFA-A4E2-06612EC6C89D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Picture.DAL", "Picture.DAL\Picture.DAL.csproj", "{2BD33771-6083-4EFA-A4E2-06612EC6C89D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picture.BL", "Picture.BL\Picture.BL.csproj", "{ED3E8829-5F3D-45CB-A810-990E9C7AE088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Picture.BLL", "Picture.BL\Picture.BLL.csproj", "{ED3E8829-5F3D-45CB-A810-990E9C7AE088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picture.Shared", "Picture.Shared\Picture.Shared.csproj", "{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ED3E8829-5F3D-45CB-A810-990E9C7AE088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED3E8829-5F3D-45CB-A810-990E9C7AE088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED3E8829-5F3D-45CB-A810-990E9C7AE088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
