@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Drawing;
-
 namespace picture
 {
     class Program
@@ -16,9 +15,10 @@ namespace picture
             if (!File.Exists(InputFileName))
                 return;
 
-            ColorFloatImage image = ImageIO.FileToColorFloatImage(InputFileName);
+            
+            //ColorFloatImageFormat image = ImageIO.FileToColorFloatImage(InputFileName);
 
-            ImageIO.ImageToFile(image, OutputFileName);
+            //ImageIO.ImageToFile(image, OutputFileName);
         }
     }
 }

@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
+using Picture.BLL.Formats;
 
-namespace picture
+namespace Picture.BLL.IO
 {
     public unsafe partial class ImageIO
     {
@@ -57,10 +58,10 @@ namespace picture
         /// </summary>
         /// <param name="B"></param>
         /// <returns></returns>
-        public static ColorFloatImage BitmapToColorFloatImage(Bitmap B)
+        public static ColorFloatImageFormat BitmapToColorFloatImage(Bitmap B)
         {
             int W = B.Width, H = B.Height;
-            ColorFloatImage res = new ColorFloatImage(W, H);
+            ColorFloatImageFormat res = new ColorFloatImageFormat(W, H);
 
             if (B.PixelFormat == PixelFormat.Format8bppIndexed)
             {
@@ -197,13 +198,13 @@ namespace picture
         //    return res;
         //}
 
-        public static ColorFloatImage FileToColorFloatImage(string filename)
+        public static ColorFloatImageFormat FileToColorFloatImage(string filename)
         {
             if (CheckPGM(filename))
                 return ReadPGM(filename).ToColorFloatImage();
 
             Bitmap B = new Bitmap(filename);
-            ColorFloatImage res = BitmapToColorFloatImage(B);
+            ColorFloatImageFormat res = BitmapToColorFloatImage(B);
             B.Dispose();
             return res;
         }
@@ -259,7 +260,7 @@ namespace picture
             }
         }
 
-        static GrayscaleFloatImage ReadPGM(string filename)
+        static GrayscaleFloatImageFormat ReadPGM(string filename)
         {
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             try
@@ -303,7 +304,7 @@ namespace picture
                     break;
                 }
 
-                GrayscaleFloatImage res = new GrayscaleFloatImage(Width, Height);
+                GrayscaleFloatImageFormat res = new GrayscaleFloatImageFormat(Width, Height);
 
                 if (MaxL <= 255)
                 {
@@ -334,7 +335,7 @@ namespace picture
 
         #region Internal formats => Bitmap, File
 
-        public static Bitmap ImageToBitmap(GrayscaleFloatImage image)
+        public static Bitmap ImageToBitmap(GrayscaleFloatImageFormat image)
         {
             Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
 
@@ -382,7 +383,7 @@ namespace picture
         //    return B;
         //}
 
-        public static Bitmap ImageToBitmap(ColorFloatImage image)
+        public static Bitmap ImageToBitmap(ColorFloatImageFormat image)
         {
             Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
 
@@ -430,7 +431,7 @@ namespace picture
         //    return B;
         //}
 
-        public static void ImageToFile(GrayscaleFloatImage image, string filename)
+        public static void ImageToFile(GrayscaleFloatImageFormat image, string filename)
         {
             using (Bitmap B = ImageToBitmap(image))
                 B.Save(filename);
@@ -442,7 +443,7 @@ namespace picture
         //        B.Save(filename);
         //}
 
-        public static void ImageToFile(ColorFloatImage image, string filename)
+        public static void ImageToFile(ColorFloatImageFormat image, string filename)
         {
             using (Bitmap B = ImageToBitmap(image))
                 B.Save(filename);
