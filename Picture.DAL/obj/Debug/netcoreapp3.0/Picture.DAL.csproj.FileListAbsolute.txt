@@ -1,0 +1,7 @@
+E:\MLPicture\Picture.DAL\bin\Debug\netcoreapp3.0\Picture.DAL.deps.json
+E:\MLPicture\Picture.DAL\bin\Debug\netcoreapp3.0\Picture.DAL.dll
+E:\MLPicture\Picture.DAL\bin\Debug\netcoreapp3.0\Picture.DAL.pdb
+E:\MLPicture\Picture.DAL\obj\Debug\netcoreapp3.0\Picture.DAL.AssemblyInfoInputs.cache
+E:\MLPicture\Picture.DAL\obj\Debug\netcoreapp3.0\Picture.DAL.AssemblyInfo.cs
+E:\MLPicture\Picture.DAL\obj\Debug\netcoreapp3.0\Picture.DAL.dll
+E:\MLPicture\Picture.DAL\obj\Debug\netcoreapp3.0\Picture.DAL.pdb

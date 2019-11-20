@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Picture.DAL", "Picture.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Picture.BLL", "Picture.BL\Picture.BLL.csproj", "{ED3E8829-5F3D-45CB-A810-990E9C7AE088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picture.Shared", "Picture.Shared\Picture.Shared.csproj", "{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Picture.Shared", "Picture.Shared\Picture.Shared.csproj", "{7F7CC8B2-BBD2-4199-9676-13BA6429CC7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
