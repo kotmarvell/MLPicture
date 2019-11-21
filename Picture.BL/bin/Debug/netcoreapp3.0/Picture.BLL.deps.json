@@ -62,8 +62,16 @@
         }
       },
       "Picture.DAL/1.0.0": {
+        "dependencies": {
+          "Picture.Shared": "1.0.0"
+        },
         "runtime": {
           "Picture.DAL.dll": {}
+        }
+      },
+      "Picture.Shared/1.0.0": {
+        "runtime": {
+          "Picture.Shared.dll": {}
         }
       }
     }
@@ -96,6 +104,11 @@
       "hashPath": "system.drawing.common.4.6.1.nupkg.sha512"
     },
     "Picture.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Picture.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

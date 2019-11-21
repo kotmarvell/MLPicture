@@ -8,4 +8,8 @@
     <Folder Include="Implementation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Picture.Shared\Picture.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

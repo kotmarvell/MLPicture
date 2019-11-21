@@ -9,3 +9,5 @@ E:\MLPicture\Picture.BL\bin\Debug\netcoreapp3.0\Picture.DAL.pdb
 E:\MLPicture\Picture.BL\obj\Debug\netcoreapp3.0\Picture.BLL.csproj.CopyComplete
 E:\MLPicture\Picture.BL\obj\Debug\netcoreapp3.0\Picture.BLL.dll
 E:\MLPicture\Picture.BL\obj\Debug\netcoreapp3.0\Picture.BLL.pdb
+E:\MLPicture\Picture.BL\bin\Debug\netcoreapp3.0\Picture.Shared.dll
+E:\MLPicture\Picture.BL\bin\Debug\netcoreapp3.0\Picture.Shared.pdb

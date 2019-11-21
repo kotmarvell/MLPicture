@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.0": {
+      "Picture.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Picture.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Picture.Shared.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Picture.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Picture.Shared/Picture.Shared.csproj",
+      "msbuildProject": "../Picture.Shared/Picture.Shared.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.0": [
+      "Picture.Shared >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\marve\\.nuget\\packages\\": {},
@@ -36,7 +55,11 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\MLPicture\\Picture.Shared\\Picture.Shared.csproj": {
+              "projectPath": "E:\\MLPicture\\Picture.Shared\\Picture.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

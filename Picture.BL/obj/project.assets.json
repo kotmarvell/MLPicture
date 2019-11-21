@@ -55,11 +55,24 @@
       "Picture.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "Picture.Shared": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Picture.DAL.dll": {}
         },
         "runtime": {
           "bin/placeholder/Picture.DAL.dll": {}
+        }
+      },
+      "Picture.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Picture.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Picture.Shared.dll": {}
         }
       }
     }
@@ -154,6 +167,11 @@
       "type": "project",
       "path": "../Picture.DAL/Picture.DAL.csproj",
       "msbuildProject": "../Picture.DAL/Picture.DAL.csproj"
+    },
+    "Picture.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Picture.Shared/Picture.Shared.csproj",
+      "msbuildProject": "../Picture.Shared/Picture.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {

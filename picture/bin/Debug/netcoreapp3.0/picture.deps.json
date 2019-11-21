@@ -70,8 +70,16 @@
         }
       },
       "Picture.DAL/1.0.0": {
+        "dependencies": {
+          "Picture.Shared": "1.0.0"
+        },
         "runtime": {
           "Picture.DAL.dll": {}
+        }
+      },
+      "Picture.Shared/1.0.0": {
+        "runtime": {
+          "Picture.Shared.dll": {}
         }
       }
     }
@@ -109,6 +117,11 @@
       "sha512": ""
     },
     "Picture.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Picture.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

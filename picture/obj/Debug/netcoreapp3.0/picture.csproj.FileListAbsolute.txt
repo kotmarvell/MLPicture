@@ -19,3 +19,5 @@ E:\MLPicture\picture\obj\Debug\netcoreapp3.0\picture.AssemblyInfo.cs
 E:\MLPicture\picture\obj\Debug\netcoreapp3.0\picture.csproj.CopyComplete
 E:\MLPicture\picture\obj\Debug\netcoreapp3.0\picture.dll
 E:\MLPicture\picture\obj\Debug\netcoreapp3.0\picture.pdb
+E:\MLPicture\picture\bin\Debug\netcoreapp3.0\Picture.Shared.dll
+E:\MLPicture\picture\bin\Debug\netcoreapp3.0\Picture.Shared.pdb

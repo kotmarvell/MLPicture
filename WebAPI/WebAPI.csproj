@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Picture.BL\Picture.BLL.csproj" />
+    <ProjectReference Include="..\Picture.DAL\Picture.DAL.csproj" />
+    <ProjectReference Include="..\Picture.Shared\Picture.Shared.csproj" />
   </ItemGroup>
 
 </Project>
