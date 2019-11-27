@@ -29,62 +29,6 @@ namespace picture
             //}
             ImageIO.ImageToFile(image, OutputFileName);
 
-            string InputPattern = "E:/MLPicture/picture/assets/inputs/finish.jpg";
-            ColorFloatImageFormat pattern = ImageIO.FileToColorFloatImage(InputPattern);
-            
-            //for (int i = 0, k = 0; i < pattern.Height; ++i)
-            //{
-            //    for (int l = 0; l < pattern.Width; ++l)
-            //    {
-            //        patternData[i, l] = pattern.rawdata[k++];
-            //    }
-            //}
-            //int m = 0;
-            //int z = 0;
-            //int max = 0;
-            //int countM = 0;
-            //for (int height = 0; height < image.Height - 47; height++)
-            //{
-            //    for (int width = 0; width < image.Width - 48; width++)
-            //    {
-            //        count = 0;
-            //        m = 0;
-            //        z = 0;
-            //        for (int i = height; i < height + 47; i++)
-            //        {
-            //            z = 0;
-            //            for (int l = width; l < width + 48; l++)
-            //            {
-            //                if ((patternData[m, z].r == imageData[i, l].r) && (patternData[m, z].g == imageData[i, l].g) && (patternData[m, z].b == imageData[i, l].b))
-            //                {
-            //                    count++;
-            //                }
-            //                z++;
-            //            }
-            //            m++;
-            //        }
-            //        if(count > max)
-            //        {
-            //            max = count;
-            //        }
-            //        data[height, width] = count;
-            //    }
-            //}
-
-
-            //for (int height = 0; height < image.Height; height++)
-            //{
-            //    for (int width = 0; width < image.Width; width++)
-            //    {
-            //        if(data[height,width] >= max-1)
-            //        {
-            //            Console.WriteLine(height + " " + width);
-            //        }
-            //    }
-            //}
-
-            //Console.WriteLine(countM);
-
         }
     }
 }

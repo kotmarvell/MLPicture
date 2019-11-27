@@ -26,6 +26,7 @@ namespace Picture.BLL
             return imageData;
         }
 
+        #region MatchWithPattern
         public int[,] MatchWithPattern(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern)
         {
             int heightImage = image.GetUpperBound(0) + 1;
@@ -78,5 +79,8 @@ namespace Picture.BLL
                 return false; 
             }
         }
+        #endregion
+
+
     }
 }
