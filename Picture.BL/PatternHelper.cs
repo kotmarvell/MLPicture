@@ -44,22 +44,28 @@ namespace Picture.BLL
             return imageData;
         }
 
-        private static int Match(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern, int startWidth, int startHeight)
+        private static int Match(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern, int startHeight, int startWidth)
         {
             int coefficient = 0;
 
             int height = pattern.GetUpperBound(0) + 1;
             int width = pattern.Length / height;
 
-            for (int i = startHeight, iPattern = 0; i < startHeight + height; i++, iPattern++)
+            int iPattern = 0;
+            int lPattern = 0;
+
+            for (int i = startHeight; i < startHeight + height; i++)
             {
-                for (int l = startWidth, lPattern = 0; l < startWidth + width; l++, lPattern++)
+                lPattern = 0;
+                for (int l = startWidth; l < startWidth + width; l++)
                 {
                     if (ComparePixel(image[i, l], pattern[iPattern, lPattern]))
                     {
                         coefficient++;
                     }
+                    lPattern++;
                 }
+                iPattern++;
             }
             
             return coefficient;
@@ -70,5 +76,33 @@ namespace Picture.BLL
             return pixelA.Equals(pixelB);
         }
         #endregion
+
+        public static int Sum(int[,] data)
+        {
+
+            int height = data.GetUpperBound(0) + 1;
+            int width = data.Length / height;
+
+            int max = 0;
+            int count = 0;
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int l = 0; l < width; l++)
+                {
+                    if (max < data[i, l])
+                    {
+                        max = data[i, l];
+                        count = 0;
+                    }
+                    if (max == data[i, l])
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return count;
+        }
     }
 }

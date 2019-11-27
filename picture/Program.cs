@@ -19,6 +19,17 @@ namespace picture
                 return;
             
             ColorFloatImageFormat image = ImageIO.FileToColorFloatImage(InputFileName);
+
+            for (int i = 0; i < image.Height * image.Width; i++)
+            {
+                if ((image.RawData[i].R <= 255) && (image.RawData[i].R >= 200) && (image.RawData[i].G >= 200) && (image.RawData[i].G <= 255) && (image.RawData[i].B <= 100))
+                {
+                    image.RawData[i].R = 255;
+                    image.RawData[i].G = 255;
+                    image.RawData[i].B = 0;
+                }
+            }
+
             ColorFloatPixel[,] matrixPixelImage = new ColorFloatPixel[image.Height, image.Width];
             matrixPixelImage = PatternHelper.ColorImage(image);
 
@@ -27,22 +38,33 @@ namespace picture
                 return;
             
             ColorFloatImageFormat pattern = ImageIO.FileToColorFloatImage(PatternFileName);
+
+            for (int i = 0; i < pattern.Height * pattern.Width; i++)
+            {
+                if ((image.RawData[i].R <= 255) && (pattern.RawData[i].R >= 200) && (pattern.RawData[i].G >= 200) && (pattern.RawData[i].G <= 255) && (pattern.RawData[i].B <= 100))
+                {
+                    pattern.RawData[i].R = 255;
+                    pattern.RawData[i].G = 255;
+                    pattern.RawData[i].B = 0;
+                }
+
+                if ((image.RawData[i].R <= 255) && (pattern.RawData[i].R >= 240) && (pattern.RawData[i].G >= 240) && (pattern.RawData[i].G <= 255) && 
+                    (pattern.RawData[i].B >= 240) && (pattern.RawData[i].B <= 255))
+                {
+                    pattern.RawData[i].R = 255;
+                    pattern.RawData[i].G = 255;
+                    pattern.RawData[i].B = 250;
+                    pattern.RawData[i].A = -1;
+                }
+            }
+
             ColorFloatPixel[,] matrixPixelPattern = new ColorFloatPixel[pattern.Height, pattern.Width];
             matrixPixelPattern = PatternHelper.ColorImage(pattern);
 
             int[,] data = new int[image.Height, image.Width];
             data = PatternHelper.MatchWithPattern(matrixPixelImage, matrixPixelPattern);
 
-            //for (int i = 0; i < image.Height * image.Width; i++)
-            //{
-            //    if ((image.rawdata[i].r <= 255) && (image.rawdata[i].r >= 200) && (image.rawdata[i].g >= 200) && (image.rawdata[i].g <= 255) && (image.rawdata[i].b <= 100))
-            //    {
-            //        image.rawdata[i].r = 255;
-            //        image.rawdata[i].g = 255;
-            //        image.rawdata[i].b = 0;
-            //    }
-            //}
-
+            Console.WriteLine(PatternHelper.Sum(data));
 
         }
     }
