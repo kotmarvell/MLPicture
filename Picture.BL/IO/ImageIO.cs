@@ -40,7 +40,8 @@ namespace Picture.BLL.IO
             lbi.data = (byte*)(lbi.bitmapData.Scan0.ToPointer());
             return lbi;
         }
-        //
+
+
         public static void UnlockBitmap(LockBitmapInfo lbi)
         {
             lbi.B.UnlockBits(lbi.bitmapData);
@@ -86,7 +87,7 @@ namespace Picture.BLL.IO
                             int b = pal[c * 4];
                             int g = pal[c * 4 + 1];
                             int r = pal[c * 4 + 2];
-                            res[i, j] = new ColorFloatPixel() { b = b, g = g, r = r, a = 0.0f };
+                            res[i, j] = new ColorFloatPixel() { B = b, G = g, R = r, A = 0.0f };
                         }
                 }
                 finally
@@ -105,7 +106,7 @@ namespace Picture.BLL.IO
                             int b = lbi.data[lbi.linewidth * j + i * 4];
                             int g = lbi.data[lbi.linewidth * j + i * 4 + 1];
                             int r = lbi.data[lbi.linewidth * j + i * 4 + 2];
-                            res[i, j] = new ColorFloatPixel() { b = b, g = g, r = r, a = 0.0f };
+                            res[i, j] = new ColorFloatPixel() { B = b, G = g, R = r, A = 0.0f };
                         }
                 }
                 finally
@@ -117,87 +118,6 @@ namespace Picture.BLL.IO
             return res;
         }
 
-        //public static ColorByteImage BitmapToColorByteImage(Bitmap B)
-        //{
-        //    int W = B.Width, H = B.Height;
-        //    ColorByteImage res = new ColorByteImage(W, H);
-
-        //    if (B.PixelFormat == PixelFormat.Format8bppIndexed)
-        //    {
-        //        Color[] pi = B.Palette.Entries;
-        //        byte[] pal = new byte[1024];
-        //        for (int i = 0; i < pi.Length; i++)
-        //        {
-        //            Color C = pi[i];
-        //            pal[i * 4] = C.B;
-        //            pal[i * 4 + 1] = C.G;
-        //            pal[i * 4 + 2] = C.R;
-        //            pal[i * 4 + 3] = C.A;
-        //        }
-
-        //        LockBitmapInfo lbi = LockBitmap(B, PixelFormat.Format8bppIndexed, 1);
-        //        try
-        //        {
-        //            for (int j = 0; j < H; j++)
-        //                for (int i = 0; i < W; i++)
-        //                {
-        //                    int c = lbi.data[lbi.linewidth * j + i];
-        //                    byte b = pal[c * 4];
-        //                    byte g = pal[c * 4 + 1];
-        //                    byte r = pal[c * 4 + 2];
-        //                    res[i, j] = new ColorBytePixel() { b = b, g = g, r = r, a = 255 };
-        //                }
-        //        }
-        //        finally
-        //        {
-        //            UnlockBitmap(lbi);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LockBitmapInfo lbi = LockBitmap(B);
-        //        try
-        //        {
-        //            for (int j = 0; j < H; j++)
-        //                for (int i = 0; i < W; i++)
-        //                {
-        //                    byte b = lbi.data[lbi.linewidth * j + i * 4];
-        //                    byte g = lbi.data[lbi.linewidth * j + i * 4 + 1];
-        //                    byte r = lbi.data[lbi.linewidth * j + i * 4 + 2];
-        //                    res[i, j] = new ColorBytePixel() { b = b, g = g, r = r, a = 255 };
-        //                }
-        //        }
-        //        finally
-        //        {
-        //            UnlockBitmap(lbi);
-        //        }
-        //    }
-
-        //    return res;
-        //}
-
-        //public static GrayscaleFloatImage FileToGrayscaleFloatImage(string filename)
-        //{
-        //    if (CheckPGM(filename))
-        //        return ReadPGM(filename);
-
-        //    Bitmap B = new Bitmap(filename);
-        //    GrayscaleFloatImage res = BitmapToGrayscaleFloatImage(B);
-        //    B.Dispose();
-        //    return res;
-        //}
-
-        //public static GrayscaleByteImage FileToGrayscaleByteImage(string filename)
-        //{
-        //    if (CheckPGM(filename))
-        //        return ReadPGM(filename).ToGrayscaleByteImage();
-
-        //    Bitmap B = new Bitmap(filename);
-        //    GrayscaleByteImage res = BitmapToGrayscaleByteImage(B);
-        //    B.Dispose();
-        //    return res;
-        //}
-
         public static ColorFloatImageFormat FileToColorFloatImage(string filename)
         {
             if (CheckPGM(filename))
@@ -208,17 +128,6 @@ namespace Picture.BLL.IO
             B.Dispose();
             return res;
         }
-
-        //public static ColorByteImage CreateFromFileB4(string filename)
-        //{
-        //    if (CheckPGM(filename))
-        //        return ReadPGM(filename).ToColorByteImage();
-
-        //    Bitmap B = new Bitmap(filename);
-        //    ColorByteImage res = BitmapToColorByteImage(B);
-        //    B.Dispose();
-        //    return res;
-        //}
 
         #endregion
 
@@ -359,30 +268,6 @@ namespace Picture.BLL.IO
             return B;
         }
 
-        //public static Bitmap ImageToBitmap(GrayscaleByteImage image)
-        //{
-        //    Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
-
-        //    LockBitmapInfo lbi = LockBitmap(B);
-        //    try
-        //    {
-        //        for (int j = 0; j < image.Height; j++)
-        //            for (int i = 0; i < image.Width; i++)
-        //            {
-        //                byte c = image[i, j];
-        //                lbi.data[lbi.linewidth * j + i * 4] = c;
-        //                lbi.data[lbi.linewidth * j + i * 4 + 1] = c;
-        //                lbi.data[lbi.linewidth * j + i * 4 + 2] = c;
-        //            }
-        //    }
-        //    finally
-        //    {
-        //        UnlockBitmap(lbi);
-        //    }
-
-        //    return B;
-        //}
-
         public static Bitmap ImageToBitmap(ColorFloatImageFormat image)
         {
             Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
@@ -394,9 +279,9 @@ namespace Picture.BLL.IO
                     for (int i = 0; i < image.Width; i++)
                     {
                         ColorFloatPixel p = image[i, j];
-                        lbi.data[lbi.linewidth * j + i * 4] = p.b < 0.0f ? (byte)0 : p.b > 255.0f ? (byte)255 : (byte)p.b;
-                        lbi.data[lbi.linewidth * j + i * 4 + 1] = p.g < 0.0f ? (byte)0 : p.g > 255.0f ? (byte)255 : (byte)p.g;
-                        lbi.data[lbi.linewidth * j + i * 4 + 2] = p.r < 0.0f ? (byte)0 : p.r > 255.0f ? (byte)255 : (byte)p.r;
+                        lbi.data[lbi.linewidth * j + i * 4] = p.B < 0.0f ? (byte)0 : p.B > 255.0f ? (byte)255 : (byte)p.B;
+                        lbi.data[lbi.linewidth * j + i * 4 + 1] = p.G < 0.0f ? (byte)0 : p.G > 255.0f ? (byte)255 : (byte)p.G;
+                        lbi.data[lbi.linewidth * j + i * 4 + 2] = p.R < 0.0f ? (byte)0 : p.R > 255.0f ? (byte)255 : (byte)p.R;
                     }
             }
             finally
@@ -407,53 +292,17 @@ namespace Picture.BLL.IO
             return B;
         }
 
-        //public static Bitmap ImageToBitmap(ColorByteImage image)
-        //{
-        //    Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
-
-        //    LockBitmapInfo lbi = LockBitmap(B);
-        //    try
-        //    {
-        //        for (int j = 0; j < image.Height; j++)
-        //            for (int i = 0; i < image.Width; i++)
-        //            {
-        //                ColorBytePixel p = image[i, j];
-        //                lbi.data[lbi.linewidth * j + i * 4] = p.b;
-        //                lbi.data[lbi.linewidth * j + i * 4 + 1] = p.g;
-        //                lbi.data[lbi.linewidth * j + i * 4 + 2] = p.r;
-        //            }
-        //    }
-        //    finally
-        //    {
-        //        UnlockBitmap(lbi);
-        //    }
-
-        //    return B;
-        //}
-
         public static void ImageToFile(GrayscaleFloatImageFormat image, string filename)
         {
             using (Bitmap B = ImageToBitmap(image))
                 B.Save(filename);
         }
 
-        //public static void ImageToFile(GrayscaleByteImage image, string filename)
-        //{
-        //    using (Bitmap B = ImageToBitmap(image))
-        //        B.Save(filename);
-        //}
-
         public static void ImageToFile(ColorFloatImageFormat image, string filename)
         {
             using (Bitmap B = ImageToBitmap(image))
                 B.Save(filename);
         }
-
-        //public static void ImageToFile(ColorByteImage image, string filename)
-        //{
-        //    using (Bitmap B = ImageToBitmap(image))
-        //        B.Save(filename);
-        //}
 
         #endregion
     }

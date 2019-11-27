@@ -45,8 +45,8 @@ namespace Picture.BLL.Formats
         public ColorFloatImageFormat ToColorFloatImage()
         {
             ColorFloatImageFormat res = new ColorFloatImageFormat(Width, Height);
-            for (int i = 0; i < res.rawdata.Length; i++)
-                res.rawdata[i] = new ColorFloatPixel() { b = rawdata[i], g = rawdata[i], r = rawdata[i], a = 0.0f };
+            for (int i = 0; i < res.RawData.Length; i++)
+                res.RawData[i] = new ColorFloatPixel() { B = rawdata[i], G = rawdata[i], R = rawdata[i], A = 0.0f };
             return res;
         }
 

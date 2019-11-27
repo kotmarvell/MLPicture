@@ -5,14 +5,9 @@ using System.Text;
 
 namespace Picture.BLL
 {
-    public class PatternHelper
+    public static class PatternHelper
     {
-        public PatternHelper(ColorFloatImageFormat image)
-        {
-
-        }
-
-        public ColorFloatPixel[,] ColorImage(ColorFloatImageFormat image)
+        public static ColorFloatPixel[,] ColorImage(ColorFloatImageFormat image)
         {
             ColorFloatPixel[,] imageData = new ColorFloatPixel[image.Height, image.Width];
 
@@ -20,14 +15,15 @@ namespace Picture.BLL
             {
                 for (int width = 0; width < image.Width; ++width)
                 {
-                    imageData[height, width] = image.rawdata[countPixel++];
+                    imageData[height, width] = image.RawData[countPixel++];
                 }
             }
+
             return imageData;
         }
 
         #region MatchWithPattern
-        public int[,] MatchWithPattern(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern)
+        public static int[,] MatchWithPattern(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern)
         {
             int heightImage = image.GetUpperBound(0) + 1;
             int widthImage = image.Length / heightImage;
@@ -39,7 +35,7 @@ namespace Picture.BLL
 
             for (int i = 0; i < (heightImage - heightPattern); i++)
             {
-                for(int l = 0; l < (widthImage - widthPattern); l++)
+                for (int l = 0; l < (widthImage - widthPattern); l++)
                 {
                     imageData[i, l] = Match(image, pattern, i, l);
                 }
@@ -48,39 +44,31 @@ namespace Picture.BLL
             return imageData;
         }
 
-        private int Match (ColorFloatPixel[,] image, ColorFloatPixel[,] pattern, int startWidth, int startHeight)
+        private static int Match(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern, int startWidth, int startHeight)
         {
             int coefficient = 0;
 
             int height = pattern.GetUpperBound(0) + 1;
             int width = pattern.Length / height;
 
-            for (int i = startHeight, iPattern = 0 ; i < startHeight + height; i++, iPattern++)
+            for (int i = startHeight, iPattern = 0; i < startHeight + height; i++, iPattern++)
             {
-                for(int l = startWidth, lPattern = 0; l < startWidth + width; l++, lPattern++)
+                for (int l = startWidth, lPattern = 0; l < startWidth + width; l++, lPattern++)
                 {
-                    if(ComparePixel(image[i,l], pattern[iPattern, lPattern]))
+                    if (ComparePixel(image[i, l], pattern[iPattern, lPattern]))
                     {
                         coefficient++;
                     }
                 }
             }
+            
             return coefficient;
         }
 
-        private bool ComparePixel(ColorFloatPixel Pixel_a, ColorFloatPixel Pixel_b)
+        private static bool ComparePixel(ColorFloatPixel pixelA, ColorFloatPixel pixelB)
         {
-            if (Pixel_a.r == Pixel_b.r && Pixel_a.g == Pixel_b.g && Pixel_a.b == Pixel_b.b)
-            {
-                return true;
-            }
-            else 
-            { 
-                return false; 
-            }
+            return pixelA.Equals(pixelB);
         }
         #endregion
-
-
     }
 }
