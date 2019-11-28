@@ -29,7 +29,6 @@ namespace Picture.BLL.Formats
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
-        
         public ColorFloatPixel[] RawData { get; }
 
         public ColorFloatImageFormat(int Width, int Height)

@@ -13,7 +13,7 @@ namespace picture
     {
         static void Main(string[] args)
         {
-            string InputFileName = "E:/MLPicture/picture/assets/inputs/Проект ОДД_pages-to-jpg-0027.jpg";
+            string InputFileName = "E:/MLPicture/picture/assets/inputs/Проект ОДД_pages-to-jpg-0029.jpg";
             string OutputFileName = "E:/MLPicture/picture/assets/inputs/finish1.jpg";
             if (!File.Exists(InputFileName))
                 return;
