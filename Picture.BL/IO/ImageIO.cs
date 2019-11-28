@@ -28,23 +28,28 @@ namespace Picture.BLL.IO
             LockBitmapInfo lbi;
             GraphicsUnit unit = GraphicsUnit.Pixel;
             RectangleF boundsF = B.GetBounds(ref unit);
-            Rectangle bounds = new Rectangle((int)boundsF.X,
-                (int)boundsF.Y,
-                (int)boundsF.Width,
-                (int)boundsF.Height);
-            lbi.B = B;
-            lbi.Width = (int)boundsF.Width;
-            lbi.Height = (int)boundsF.Height;
+            Rectangle bounds = new Rectangle
+                (
+                    (int)boundsF.X,
+                    (int)boundsF.Y,
+                    (int)boundsF.Width,
+                    (int)boundsF.Height
+                );
+            
+            lbi.b = B;
+            lbi.width = (int)boundsF.Width;
+            lbi.height = (int)boundsF.Height;
             lbi.bitmapData = B.LockBits(bounds, ImageLockMode.ReadWrite, pf);
             lbi.linewidth = lbi.bitmapData.Stride;
             lbi.data = (byte*)(lbi.bitmapData.Scan0.ToPointer());
+            
             return lbi;
         }
 
 
         public static void UnlockBitmap(LockBitmapInfo lbi)
         {
-            lbi.B.UnlockBits(lbi.bitmapData);
+            lbi.b.UnlockBits(lbi.bitmapData);
             lbi.bitmapData = null;
             lbi.data = null;
         }
@@ -87,7 +92,14 @@ namespace Picture.BLL.IO
                             int b = pal[c * 4];
                             int g = pal[c * 4 + 1];
                             int r = pal[c * 4 + 2];
-                            res[i, j] = new ColorFloatPixel() { B = b, G = g, R = r, A = 0.0f };
+                            
+                            res[i, j] = new ColorFloatPixel() 
+                            { 
+                                B = b,
+                                G = g, 
+                                R = r, 
+                                A = 0.0f 
+                            };
                         }
                 }
                 finally
@@ -106,7 +118,14 @@ namespace Picture.BLL.IO
                             int b = lbi.data[lbi.linewidth * j + i * 4];
                             int g = lbi.data[lbi.linewidth * j + i * 4 + 1];
                             int r = lbi.data[lbi.linewidth * j + i * 4 + 2];
-                            res[i, j] = new ColorFloatPixel() { B = b, G = g, R = r, A = 0.0f };
+                            
+                            res[i, j] = new ColorFloatPixel() 
+                            { 
+                                B = b, 
+                                G = g, 
+                                R = r, 
+                                A = 0.0f 
+                            };
                         }
                 }
                 finally
@@ -126,6 +145,7 @@ namespace Picture.BLL.IO
             Bitmap B = new Bitmap(filename);
             ColorFloatImageFormat res = BitmapToColorFloatImage(B);
             B.Dispose();
+            
             return res;
         }
 
@@ -143,6 +163,7 @@ namespace Picture.BLL.IO
 
                 int b1 = fs.ReadByte();
                 int b2 = fs.ReadByte();
+                
                 return (b1 == 'P' && b2 == '5');
             }
             finally
@@ -154,6 +175,7 @@ namespace Picture.BLL.IO
         static string ReadString(Stream stream)
         {
             StringBuilder sb = new StringBuilder();
+            
             int c1 = stream.ReadByte();
             if (c1 == -1)
                 return null;
@@ -196,9 +218,11 @@ namespace Picture.BLL.IO
                         return null;
                     else if (str == "" || str.StartsWith("#"))
                         continue;
+                    
                     string[] arr = str.Split(' ', '\t');
                     Width = int.Parse(arr[0]);
                     Height = int.Parse(arr[1]);
+                    
                     break;
                 }
 
@@ -209,7 +233,9 @@ namespace Picture.BLL.IO
                         return null;
                     else if (str == "" || str.StartsWith("#"))
                         continue;
+                    
                     MaxL = int.Parse(str);
+                    
                     break;
                 }
 
@@ -220,16 +246,26 @@ namespace Picture.BLL.IO
                     byte[] raw = new byte[Width * Height];
                     fs.Read(raw, 0, raw.Length);
                     for (int j = 0; j < Height; j++)
+                    {
                         for (int i = 0; i < Width; i++)
+                        {
                             res[i, j] = raw[j * Width + i];
+                        }
+                    }
                 }
                 else
                 {
                     byte[] raw = new byte[Width * Height * 2];
+                    
                     fs.Read(raw, 0, raw.Length * 2);
+
                     for (int j = 0; j < Height; j++)
+                    {
                         for (int i = 0; i < Width; i++)
+                        {
                             res[i, j] = raw[(j * Width + i) * 2] + raw[(j * Width + i) * 2 + 1] * 255;
+                        }
+                    }
                 }
 
                 return res;
@@ -246,9 +282,9 @@ namespace Picture.BLL.IO
 
         public static Bitmap ImageToBitmap(GrayscaleFloatImageFormat image)
         {
-            Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
+            Bitmap b = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
 
-            LockBitmapInfo lbi = LockBitmap(B);
+            LockBitmapInfo lbi = LockBitmap(b);
             try
             {
                 for (int j = 0; j < image.Height; j++)
@@ -265,14 +301,14 @@ namespace Picture.BLL.IO
                 UnlockBitmap(lbi);
             }
 
-            return B;
+            return b;
         }
 
         public static Bitmap ImageToBitmap(ColorFloatImageFormat image)
         {
-            Bitmap B = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
+            Bitmap b = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
 
-            LockBitmapInfo lbi = LockBitmap(B);
+            LockBitmapInfo lbi = LockBitmap(b);
             try
             {
                 for (int j = 0; j < image.Height; j++)
@@ -289,19 +325,19 @@ namespace Picture.BLL.IO
                 UnlockBitmap(lbi);
             }
 
-            return B;
+            return b;
         }
 
         public static void ImageToFile(GrayscaleFloatImageFormat image, string filename)
         {
-            using (Bitmap B = ImageToBitmap(image))
-                B.Save(filename);
+            using (Bitmap b = ImageToBitmap(image))
+                b.Save(filename);
         }
 
         public static void ImageToFile(ColorFloatImageFormat image, string filename)
         {
-            using (Bitmap B = ImageToBitmap(image))
-                B.Save(filename);
+            using (Bitmap b = ImageToBitmap(image))
+                b.Save(filename);
         }
 
         #endregion
@@ -309,10 +345,11 @@ namespace Picture.BLL.IO
 
     public unsafe struct LockBitmapInfo
     {
-        public Bitmap B;
+        public Bitmap b;
         public int linewidth;
         public BitmapData bitmapData;
         public byte* data;
-        public int Width, Height;
+        public int width;
+        public int height;
     }
 }
