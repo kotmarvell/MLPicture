@@ -43,13 +43,13 @@ namespace Picture.BLL.Formats
             get
             {
                 if (x < 0 || x >= Width || y < 0 || y >= Height)
-                    throw new IndexOutOfRangeException(string.Format("Trying to access pixel ({0}, {1}) in {2}x{3} image", x, y, Width, Height));
+                    throw new IndexOutOfRangeException($"Trying to access pixel ({x}, {y}) in {Width}x{Height} image");
                 return RawData[y * Width + x];
             }
             set
             {
                 if (x < 0 || x >= Width || y < 0 || y >= Height)
-                    throw new IndexOutOfRangeException(string.Format("Trying to access pixel ({0}, {1}) in {2}x{3} image", x, y, Width, Height));
+                    throw new IndexOutOfRangeException($"Trying to access pixel ({x}, {y}) in {Width}x{Height} image");
                 RawData[y * Width + x] = value;
             }
         }
