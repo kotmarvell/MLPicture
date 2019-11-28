@@ -9,13 +9,13 @@ namespace Picture.BLL.Formats
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public float[] RewData { get; }
+        public float[] RawData { get; }
 
         public GrayscaleFloatImageFormat(int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
-            RewData = new float[Width * Height];
+            RawData = new float[Width * Height];
         }
 
         public float this[int x, int y]
@@ -23,14 +23,15 @@ namespace Picture.BLL.Formats
             get
             {
                 if (x < 0 || x >= Width || y < 0 || y >= Height)
-                    throw new IndexOutOfRangeException(string.Format("Trying to access pixel ({0}, {1}) in {2}x{3} image", x, y, Width, Height));
-                return RewData[y * Width + x];
+                    throw new IndexOutOfRangeException($"Trying to access pixel ({x}, {y}) in {Width}x{Height} image");
+                
+                return RawData[y * Width + x];
             }
             set
             {
                 if (x < 0 || x >= Width || y < 0 || y >= Height)
-                    throw new IndexOutOfRangeException(string.Format("Trying to access pixel ({0}, {1}) in {2}x{3} image", x, y, Width, Height));
-                RewData[y * Width + x] = value;
+                    throw new IndexOutOfRangeException($"Trying to access pixel ({x}, {y}) in {Width}x{Height} image");
+                RawData[y * Width + x] = value;
             }
         }
 
@@ -38,7 +39,8 @@ namespace Picture.BLL.Formats
         {
             GrayscaleByteImageFormat res = new GrayscaleByteImageFormat(Width, Height);
             for (int i = 0; i < res.RewData.Length; i++)
-                res.RewData[i] = RewData[i] < 0.0f ? (byte)0 : RewData[i] > 255.0f ? (byte)255 : (byte)RewData[i];
+                res.RewData[i] = RawData[i] < 0.0f ? (byte)0 : RawData[i] > 255.0f ? (byte)255 : (byte)RawData[i];
+            
             return res;
         }
 
@@ -46,7 +48,13 @@ namespace Picture.BLL.Formats
         {
             ColorFloatImageFormat res = new ColorFloatImageFormat(Width, Height);
             for (int i = 0; i < res.RawData.Length; i++)
-                res.RawData[i] = new ColorFloatPixel() { B = RewData[i], G = RewData[i], R = RewData[i], A = 0.0f };
+                res.RawData[i] = new ColorFloatPixel() 
+                { 
+                    B = RawData[i], 
+                    G = RawData[i], 
+                    R = RawData[i], 
+                    A = 0.0f };
+            
             return res;
         }
 
@@ -55,9 +63,16 @@ namespace Picture.BLL.Formats
             ColorByteImageFormat res = new ColorByteImageFormat(Width, Height);
             for (int i = 0; i < res.RawData.Length; i++)
             {
-                byte c = RewData[i] < 0.0f ? (byte)0 : RewData[i] > 255.0f ? (byte)255 : (byte)RewData[i];
-                res.RawData[i] = new ColorBytePixel() { B = c, G = c, R = c, A = 0 };
+                byte c = RawData[i] < 0.0f ? (byte)0 : RawData[i] > 255.0f ? (byte)255 : (byte)RawData[i];
+                res.RawData[i] = new ColorBytePixel() 
+                { 
+                    B = c, 
+                    G = c, 
+                    R = c, 
+                    A = 0 
+                };
             }
+            
             return res;
         }
     }
