@@ -1,0 +1,8 @@
+E:\MLPicture\Picture.Shared\bin\Debug\netstandard2.0\Picture.Shared.deps.json
+E:\MLPicture\Picture.Shared\bin\Debug\netstandard2.0\Picture.Shared.dll
+E:\MLPicture\Picture.Shared\bin\Debug\netstandard2.0\Picture.Shared.pdb
+E:\MLPicture\Picture.Shared\obj\Debug\netstandard2.0\Picture.Shared.csprojAssemblyReference.cache
+E:\MLPicture\Picture.Shared\obj\Debug\netstandard2.0\Picture.Shared.AssemblyInfoInputs.cache
+E:\MLPicture\Picture.Shared\obj\Debug\netstandard2.0\Picture.Shared.AssemblyInfo.cs
+E:\MLPicture\Picture.Shared\obj\Debug\netstandard2.0\Picture.Shared.dll
+E:\MLPicture\Picture.Shared\obj\Debug\netstandard2.0\Picture.Shared.pdb

@@ -1,0 +1,10 @@
+C:\Users\marve\source\repos\picture\picture\obj\Debug\netcoreapp2.2\picture.csprojAssemblyReference.cache
+C:\Users\marve\source\repos\picture\picture\obj\Debug\netcoreapp2.2\picture.AssemblyInfoInputs.cache
+C:\Users\marve\source\repos\picture\picture\obj\Debug\netcoreapp2.2\picture.AssemblyInfo.cs
+C:\Users\marve\source\repos\picture\picture\bin\Debug\netcoreapp2.2\picture.deps.json
+C:\Users\marve\source\repos\picture\picture\bin\Debug\netcoreapp2.2\picture.runtimeconfig.json
+C:\Users\marve\source\repos\picture\picture\bin\Debug\netcoreapp2.2\picture.runtimeconfig.dev.json
+C:\Users\marve\source\repos\picture\picture\bin\Debug\netcoreapp2.2\picture.dll
+C:\Users\marve\source\repos\picture\picture\bin\Debug\netcoreapp2.2\picture.pdb
+C:\Users\marve\source\repos\picture\picture\obj\Debug\netcoreapp2.2\picture.dll
+C:\Users\marve\source\repos\picture\picture\obj\Debug\netcoreapp2.2\picture.pdb

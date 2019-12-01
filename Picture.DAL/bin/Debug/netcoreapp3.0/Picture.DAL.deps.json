@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Picture.DAL/1.0.0": {
+        "dependencies": {
+          "Picture.Shared": "1.0.0"
+        },
+        "runtime": {
+          "Picture.DAL.dll": {}
+        }
+      },
+      "Picture.Shared/1.0.0": {
+        "runtime": {
+          "Picture.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Picture.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Picture.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
