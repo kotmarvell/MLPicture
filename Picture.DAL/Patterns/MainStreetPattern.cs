@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Picture.DAL.Patterns
 {
-    class MainStreetPattern
+    public class MainStreetPattern
     {
+        public string NameFile { get; set; }
+        public MainStreetPattern(string PatternFileName = "")
+        {
+
+        }
     }
 }

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
-using Picture.BLL.Formats;
+using Picture.DAL.Formats;
 
-namespace Picture.BLL.IO
+namespace Picture.DAL.IO
 {
     public unsafe partial class ImageIO
     {

@@ -3,42 +3,28 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Picture.BLL.Formats
-{ 
+namespace Picture.DAL.Formats
+{
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct ColorFloatPixel
+    public struct ColorBytePixel
     {
-        public float B, G, R, A;
-
-        public override bool Equals(object obj)
-        {
-            return obj is ColorFloatPixel pixel &&
-                   B == pixel.B &&
-                   G == pixel.G &&
-                   R == pixel.R &&
-                   A == pixel.A;
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(B, G, R, A);
-        }
+        public byte B, G, R, A;
     }
 
-    public class ColorFloatImageFormat
+    public class ColorByteImageFormat
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public ColorFloatPixel[] RawData { get; }
+        public ColorBytePixel[] RawData { get; }
 
-        public ColorFloatImageFormat(int Width, int Height)
+        public ColorByteImageFormat(int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
-            RawData = new ColorFloatPixel[Width * Height];
+            RawData = new ColorBytePixel[Width * Height];
         }
 
-        public ColorFloatPixel this[int x, int y]
+        public ColorBytePixel this[int x, int y]
         {
             get
             {

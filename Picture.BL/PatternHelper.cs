@@ -1,4 +1,4 @@
-﻿using Picture.BLL.Formats;
+﻿using Picture.DAL.Formats;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +7,11 @@ namespace Picture.BLL
 {
     public static class PatternHelper
     {
+        /// <summary>
+        /// Преобразование из одномерного массива пикселей в матрицу, в соответвии с размерами картинки
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
         public static ColorFloatPixel[,] ColorImage(ColorFloatImageFormat image)
         {
             ColorFloatPixel[,] imageData = new ColorFloatPixel[image.Height, image.Width];
@@ -23,10 +28,19 @@ namespace Picture.BLL
         }
 
         #region MatchWithPattern
+        /// <summary>
+        /// Проходит по каждому пикселю исходного изображения,
+        /// сравнивая его с матрицей паттерна
+        /// и выставляет вес, равный количеству
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
         public static int[,] MatchWithPattern(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern)
         {
             int heightImage = image.GetUpperBound(0) + 1;
             int widthImage = image.Length / heightImage;
+
 
             int heightPattern = pattern.GetUpperBound(0) + 1;
             int widthPattern = pattern.Length / heightPattern;
@@ -78,7 +92,7 @@ namespace Picture.BLL
         #endregion
 
         public static int Sum(int[,] data)
-        {
+        { 
 
             int height = data.GetUpperBound(0) + 1;
             int width = data.Length / height;

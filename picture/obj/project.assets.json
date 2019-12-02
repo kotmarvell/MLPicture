@@ -70,7 +70,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
         "dependencies": {
-          "Picture.Shared": "1.0.0"
+          "Picture.Shared": "1.0.0",
+          "System.Drawing.Common": "4.6.1"
         },
         "compile": {
           "bin/placeholder/Picture.DAL.dll": {}
