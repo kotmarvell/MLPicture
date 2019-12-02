@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Picture.BLL.IO    
+namespace Picture.DAL.IO    
 {
     public unsafe class DIBitmap : IDisposable
     {
