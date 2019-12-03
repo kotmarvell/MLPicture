@@ -1,4 +1,5 @@
 ﻿using Picture.DAL.Formats;
+using Picture.DAL.IO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +24,7 @@ namespace Picture.BLL
                     imageData[height, width] = image.RawData[countPixel++];
                 }
             }
-
+                
             return imageData;
         }
 
@@ -91,7 +92,7 @@ namespace Picture.BLL
         }
         #endregion
 
-        public static int Sum(int[,] data)
+        public static int Sum(int[,] data, string OutputFileName, ColorFloatPixel[,] image, ColorFloatPixel[,] pattern)
         { 
 
             int height = data.GetUpperBound(0) + 1;
@@ -116,7 +117,79 @@ namespace Picture.BLL
                 }
             }
 
+            for(int i = 0; i < height; i++)
+            {
+                for (int l = 0; l < width; l++)
+                {
+                    if (max == data[i, l])
+                    {
+                        image = SerchPattern(image, pattern, l, i);
+                    }
+                    if ((max - 1) == data[i, l])
+                    {
+                        image = SerchPattern(image, pattern, l, i);
+                    }
+                    if ((max - 2) == data[i, l])
+                    {
+                        image = SerchPattern(image, pattern, l, i);
+                    }
+                }
+            }
+
+            ColorFloatImageFormat imageRes = new ColorFloatImageFormat(width, height);
+            int length = 0;
+            int k = 0;
+            while(length < (width * height))
+            {
+                for (int g = 0; g < width; g++)
+                {
+                    imageRes.RawData[length] = image[k, g];
+                    length++;
+                }
+                k++;
+            }
+
+            ImageIO.ImageToFile(imageRes, OutputFileName);
             return count;
+        }
+
+        public static ColorFloatPixel[,] SerchPattern(ColorFloatPixel[,] image, ColorFloatPixel[,] pattern, int startWidth, int startHight)
+        {
+            int heightPattern = pattern.GetUpperBound(0) + 1;
+            int widthPattern = pattern.Length / heightPattern;
+
+            int heightImage = image.GetUpperBound(0) + 1;
+            int widthImage = image.Length / heightImage;
+
+            for (int l = startWidth; l < (startWidth + widthPattern); l++)
+            {
+                image[startHight, l].R = 0;
+                image[startHight, l].G = 0;
+                image[startHight, l].B = 0;
+            }
+
+            for (int i = startHight; i < (startHight + heightPattern); i++)
+            {
+                image[i, startWidth].R = 0;
+                image[i, startWidth].G = 0;
+                image[i, startWidth].B = 0;
+            }
+
+            for (int l = startWidth; l < (startWidth + widthPattern); l++)
+            {
+                image[startHight + heightPattern, l].R = 0;
+                image[startHight + heightPattern, l].G = 0;
+                image[startHight + heightPattern, l].B = 0;
+            }
+
+            for (int i = startHight; i < (startHight + heightPattern); i++)
+            {
+                image[i, startWidth + widthPattern].R = 0;
+                image[i, startWidth + widthPattern].G = 0;
+                image[i, startWidth + widthPattern].B = 0;
+            }
+
+            return image;
         }
     }
 }

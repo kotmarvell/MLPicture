@@ -71,7 +71,8 @@
       },
       "Picture.DAL/1.0.0": {
         "dependencies": {
-          "Picture.Shared": "1.0.0"
+          "Picture.Shared": "1.0.0",
+          "System.Drawing.Common": "4.6.1"
         },
         "runtime": {
           "Picture.DAL.dll": {}
