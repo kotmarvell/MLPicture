@@ -23,7 +23,7 @@ namespace Picture.BLL
                     imageData[height, width] = image.RawData[countPixel++];
                 }
             }
-
+                
             return imageData;
         }
 

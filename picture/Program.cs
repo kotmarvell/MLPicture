@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Picture.BLL.Formats;
-using Picture.BLL.IO;
+using Picture.DAL.Formats;
+using Picture.DAL.IO;
 using Picture.BLL;
 
 namespace picture
