@@ -8,13 +8,15 @@ namespace Picture.DAL.Models
 {
     public class Pattern
     {
-        public string NameFile { get; set; }
-        public ColorFloatImageFormat pattern { get; set; }
-        public ColorFloatPixel[,] matrixPixelPattern { get; set; }
+        public string FileName { get; set; }
+        public ColorFloatImageFormat PatternImage { get; set; }
+        public ColorFloatPixel[,] Matrix { get; set; }
+        public int MaxSimilarity { get; set; }
+        public double CoefficientSimilarity { get; set; }
         public Pattern(string PatternFileName = "")
         {
-            NameFile = PatternFileName;
-            pattern = ImageIO.FileToColorFloatImage(PatternFileName);
+            FileName = PatternFileName;
+            PatternImage = ImageIO.FileToColorFloatImage(PatternFileName);
         }
     }
 }

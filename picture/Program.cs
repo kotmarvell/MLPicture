@@ -13,22 +13,12 @@ namespace picture
     {
         static void Main(string[] args)
         {
-            string InputFileName = "E:/MLPicture/picture/assets/inputs/Проект ОДД_pages-to-jpg-0029.jpg";
+            string InputFileName = "E:/MLPicture/picture/assets/inputs/znak.jpg";
             string OutputFileName = "E:/MLPicture/picture/assets/inputs/finish1.jpg";
             if (!File.Exists(InputFileName))
                 return;
             
             ColorFloatImageFormat image = ImageIO.FileToColorFloatImage(InputFileName);
-
-            //for (int i = 0; i < image.Height * image.Width; i++)
-            //{
-            //    if ((image.RawData[i].R <= 255) && (image.RawData[i].R >= 200) && (image.RawData[i].G >= 200) && (image.RawData[i].G <= 255) && (image.RawData[i].B <= 100))
-            //    {
-            //        image.RawData[i].R = 255;
-            //        image.RawData[i].G = 255;
-            //        image.RawData[i].B = 0;
-            //    }
-            //}
 
             ColorFloatPixel[,] matrixPixelImage = new ColorFloatPixel[image.Height, image.Width];
             matrixPixelImage = PatternHelper.ColorImage(image);
@@ -41,12 +31,6 @@ namespace picture
 
             for (int i = 0; i < pattern.Height * pattern.Width; i++)
             {
-                //if ((image.RawData[i].R <= 255) && (pattern.RawData[i].R >= 200) && (pattern.RawData[i].G >= 200) && (pattern.RawData[i].G <= 255) && (pattern.RawData[i].B <= 100))
-                //{
-                //    pattern.RawData[i].R = 255;
-                //    pattern.RawData[i].G = 255;
-                //    pattern.RawData[i].B = 0;
-                //}
 
                 if ((image.RawData[i].R <= 255) && (pattern.RawData[i].R >= 240) && (pattern.RawData[i].G >= 240) && (pattern.RawData[i].G <= 255) &&
                     (pattern.RawData[i].B >= 240) && (pattern.RawData[i].B <= 255))

@@ -136,6 +136,8 @@ namespace Picture.BLL
                 }
             }
 
+            Console.WriteLine(max + " ");
+
             ColorFloatImageFormat imageRes = new ColorFloatImageFormat(width, height);
             int length = 0;
             int k = 0;
@@ -163,33 +165,34 @@ namespace Picture.BLL
 
             for (int l = startWidth; l < (startWidth + widthPattern); l++)
             {
-                image[startHight, l].R = 0;
-                image[startHight, l].G = 0;
-                image[startHight, l].B = 0;
+                image[startHight, l] = GetBlackPixel(image[startHight, l]);
             }
 
             for (int i = startHight; i < (startHight + heightPattern); i++)
             {
-                image[i, startWidth].R = 0;
-                image[i, startWidth].G = 0;
-                image[i, startWidth].B = 0;
+                image[i, startWidth] = GetBlackPixel(image[i, startWidth]);
             }
 
             for (int l = startWidth; l < (startWidth + widthPattern); l++)
             {
-                image[startHight + heightPattern, l].R = 0;
-                image[startHight + heightPattern, l].G = 0;
-                image[startHight + heightPattern, l].B = 0;
+                image[startHight + heightPattern, l] = GetBlackPixel(image[startHight + heightPattern, l]);
             }
 
             for (int i = startHight; i < (startHight + heightPattern); i++)
             {
-                image[i, startWidth + widthPattern].R = 0;
-                image[i, startWidth + widthPattern].G = 0;
-                image[i, startWidth + widthPattern].B = 0;
+                image[i, startWidth + widthPattern] = GetBlackPixel(image[i, startWidth + widthPattern]);
             }
 
             return image;
+        }
+
+        private static ColorFloatPixel GetBlackPixel(ColorFloatPixel pixel)
+        {
+            pixel.R = 0;
+            pixel.G = 0;
+            pixel.B = 0;
+
+            return pixel;
         }
     }
 }
